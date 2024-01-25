@@ -15,6 +15,9 @@ function TabBarIcon(props: {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
+// inactive icon: #bdc3cb
+// active icon: #84e8ff
+//tab bar background: #131d2b
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
@@ -24,12 +27,13 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
+        // headerShown: useClientOnlyValue(false, true),
+        headerShown: false
       }}>
       <Tabs.Screen
-        name="Home"
+        name="index"
         options={{
-          title: 'Tab One',
+          title: 'Home',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
@@ -48,16 +52,16 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="Trips"
+        name="trips"
         options={{
-          title: 'Tab Two',
+          title: 'Trips',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="Profile"
+        name="profile"
         options={{
-          title: 'Tab Three',
+          title: 'Profile',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
